@@ -8,7 +8,12 @@
     <title>Usuarios</title>
 </head>
 <body>
-    <table>
+    <form action="/findUser" method="POST">
+        <label for="criterio">Criterio:</label>
+        <input type="text" id="criteria" name="criteria"><br><br>
+        <input type="submit" value="Buscar">
+    </form>
+    <table class="style-table">
         <thead>
             <th>Name</th>
             <th>Email</th>

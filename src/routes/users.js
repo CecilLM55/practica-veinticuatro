@@ -55,5 +55,11 @@ router.get('/deleteUser/:id', (req, res) => {
     .catch((error) => {res.json({message:error})});
 });
 
+// endpoint que permite encontrar un documento.
+router.post('/findUser', (req, res) => {
+    User.find({name: {$regex: req.body.criteria, $options: 'i' }}) // ignora mayus y minus y busca en la key name cualquier coincidencia con el criterio de busqueda
+    .then((Users) => {res.render('index', {Users})}) // envia datos a la vista, incluso si es una coleccion vacia
+    .catch((error) => {res.json({message:error})}); // en caso de que la promesa devuelva error
+});
 
 module.exports = router;
